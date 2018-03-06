@@ -9,7 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tangj.springboot.domain.User;
-import com.tangj.springboot.domain.UserRepository;
+import com.tangj.springboot.mapper.UserRepository;
 import com.tangj.springboot.service.UserService;
 
 @Service

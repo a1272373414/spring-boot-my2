@@ -1,5 +1,6 @@
 package com.tangj.springboot.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -8,11 +9,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tangj.springboot.domain.User;
-import com.tangj.springboot.domain.UserRepository;
+import com.tangj.springboot.mapper.UserRepository;
 
 @RestController
 public class UserController {
@@ -39,6 +45,19 @@ public class UserController {
 		}
 		session.setAttribute("uid", uid);
 		return session.getId();
+	}
+
+	/**
+	 * 分页查询
+	 * @return
+	 */
+	@RequestMapping("/getUserList")
+	public List<User> getUserList() {
+		int page = 1, size = 10;
+		Sort sort = new Sort(Direction.DESC, "id");
+		Pageable pageable = new PageRequest(page, size, sort);
+		Page<User> userPage = userRepository.findByUserName("testName", pageable);
+		return userPage.getContent();
 	}
 
 }

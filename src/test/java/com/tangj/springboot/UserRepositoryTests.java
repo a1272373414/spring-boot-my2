@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.tangj.springboot.domain.User;
-import com.tangj.springboot.domain.UserRepository;
+import com.tangj.springboot.mapper.UserRepository;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
