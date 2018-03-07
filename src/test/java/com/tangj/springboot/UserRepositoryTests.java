@@ -1,9 +1,7 @@
 package com.tangj.springboot;
 
 import java.text.DateFormat;
-import java.util.Date;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +53,7 @@ public class UserRepositoryTests {
 	// System.out.println(user2.getId());
 	// }
 
+	@SuppressWarnings("unused")
 	@Test
 	public void testUpdate() throws Exception {
 		User user = userRepository.getOne(4l);
